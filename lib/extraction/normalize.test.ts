@@ -31,6 +31,13 @@ describe("normalizarData", () => {
     expect(normalizarData("00/01/2026")).toBeNull();
   });
 
+  it("lê datas por extenso, como o rodapé das notificações", () => {
+    expect(normalizarData("14 de agosto de 2025")).toBe("2025-08-14");
+    expect(normalizarData("Salvador, 14 de agosto de 2025")).toBe("2025-08-14");
+    expect(normalizarData("1 de março de 2026")).toBe("2026-03-01");
+    expect(normalizarData("30 de fevereiro de 2025")).toBeNull();
+  });
+
   it("rejeita lixo em vez de adivinhar", () => {
     expect(normalizarData("expedida em ___")).toBeNull();
     expect(normalizarData("")).toBeNull();
@@ -112,6 +119,20 @@ describe("normalizeExtraction", () => {
     // ...e os demais campos seguem intactos.
     expect(data.data_expedicao_notificacao.value).toBe("2026-04-10");
     expect(data.orgao_autuador.value).toBe("DETRAN-SP");
+  });
+
+  it("degrada só a data corrompida e mantém a hora legível (caso DETRAN-RJ)", () => {
+    // No documento a linha é "Data e Hora: Propr/2025 – 11:37": a data saiu
+    // ilegível na impressão, a hora não.
+    const { data, issues } = normalizeExtraction(
+      raw({
+        data_infracao: { value: "Propr/2025", confidence: 0.2, source_text: "Propr/2025" },
+        hora_infracao: { value: "11:37", confidence: 0.95, source_text: "11:37" },
+      }),
+    );
+    expect(data.data_infracao.value).toBeNull();
+    expect(data.hora_infracao.value).toBe("11:37");
+    expect(issues.map((i) => i.field)).toEqual(["data_infracao"]);
   });
 
   it("preserva o source_text do campo rebaixado para a tela de conferência", () => {

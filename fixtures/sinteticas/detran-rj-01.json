@@ -1,0 +1,27 @@
+{
+  "arquivo": "detran-rj-01.png",
+  "origem": "Modelo demonstrativo DETRAN-RJ — dados fictícios, sem validade oficial",
+  "notas": [
+    "O FIXTURE MAIS IMPORTANTE DO CONJUNTO. A linha 'Data e Hora' saiu corrompida na impressão: 'Propr/2025 – 11:37'. A data da infração é ILEGÍVEL e DEVE voltar null; a hora é legível e deve voltar 11:37.",
+    "Qualquer valor não-nulo em data_infracao aqui é falha crítica: significa que o modelo adivinhou uma data que sustentaria um prazo legal."
+  ],
+  "esperado": {
+    "document_type": "notificacao_autuacao",
+    "orgao_autuador": ["DETRAN-RJ", "DETRAN/RJ", "Departamento Estadual de Trânsito do Rio de Janeiro"],
+    "numero_ait": "RJ000000000",
+    "placa": "ABC0D00",
+    "data_infracao": null,
+    "hora_infracao": "11:37",
+    "local_infracao": "Av. Brasil, 1500 – São Cristóvão – Rio de Janeiro/RJ",
+    "municipio_uf": ["Rio de Janeiro/RJ", "Rio de Janeiro - RJ", "Rio de Janeiro"],
+    "codigo_enquadramento": ["Art. 208", "Art. 208, CTB", "208"],
+    "descricao_infracao": "Avançar o sinal vermelho do semáforo.",
+    "data_expedicao_notificacao": "2025-08-12",
+    "data_limite_defesa": null,
+    "equipamento": null,
+    "data_afericao_equipamento": null,
+    "velocidade_medida_kmh": null,
+    "velocidade_limite_kmh": null,
+    "valor_multa_brl": 293.47
+  }
+}

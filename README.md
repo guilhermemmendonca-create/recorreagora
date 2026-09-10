@@ -33,6 +33,22 @@ curl -X POST http://localhost:3000/api/extract \
 `fixtures/notificacoes/` está no `.gitignore` — são documentos reais com dados
 pessoais e não entram no repositório.
 
+## Avaliação contra gabarito
+
+`fixtures/sinteticas/` tem quatro modelos demonstrativos (BA, MS, RJ, SP) com o
+gabarito de cada campo. Com as imagens no lugar:
+
+```bash
+npm run eval
+```
+
+O runner separa erro perigoso de degradação aceitável — `NULO` (o usuário
+digita) não reprova, `ERRADO` e `INVENTADO` num campo de data reprovam. É a
+automação do critério de aceite 3: data correta ou `null`, **nunca errada**.
+
+Veja `fixtures/sinteticas/README.md` para o que cada fixture testa e para o
+buraco de cobertura do conjunto atual.
+
 ## Verificação
 
 ```bash

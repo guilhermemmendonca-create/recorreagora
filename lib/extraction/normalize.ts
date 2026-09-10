@@ -30,6 +30,15 @@ const limparTexto = (s: string | null): string | null => {
 /** Anos de 2 dígitos: 00–69 → 20xx, 70–99 → 19xx. */
 const expandirAno = (yy: number): number => (yy < 70 ? 2000 + yy : 1900 + yy);
 
+const MESES_PT: Record<string, number> = {
+  janeiro: 1, fevereiro: 2, marco: 3, abril: 4, maio: 5, junho: 6,
+  julho: 7, agosto: 8, setembro: 9, outubro: 10, novembro: 11, dezembro: 12,
+};
+
+/** Remove acentos para casar "março" com a chave "marco". */
+const semAcento = (s: string): string =>
+  s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
 /**
  * Aceita yyyy-mm-dd (já normalizado pelo modelo) e os formatos brasileiros
  * dd/mm/yyyy, dd-mm-yyyy, dd.mm.yyyy e dd/mm/yy. Datas que não existem no
@@ -54,6 +63,18 @@ export const normalizarData = (raw: string | null): string | null => {
     const ano = anoRaw.length === 2 ? String(expandirAno(Number(anoRaw))) : anoRaw;
     const candidato = `${ano}-${mes}-${dia}`;
     return isDataISO(candidato) ? candidato : null;
+  }
+
+  // Data por extenso — os rodapés dessas notificações são prosa
+  // ("Salvador, 14 de agosto de 2025"), e o modelo pode repassá-la assim.
+  const extenso = /(\d{1,2})\s+de\s+([a-zç]+)\s+de\s+(\d{4})/i.exec(semAcento(s));
+  if (extenso) {
+    const mes = MESES_PT[extenso[2]!];
+    if (mes !== undefined) {
+      const candidato =
+        `${extenso[3]}-${String(mes).padStart(2, "0")}-${extenso[1]!.padStart(2, "0")}`;
+      return isDataISO(candidato) ? candidato : null;
+    }
   }
 
   return null;

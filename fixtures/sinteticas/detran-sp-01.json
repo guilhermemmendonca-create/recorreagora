@@ -1,0 +1,26 @@
+{
+  "arquivo": "detran-sp-01.png",
+  "origem": "Modelo demonstrativo DETRAN-SP — dados fictícios, sem validade oficial",
+  "notas": [
+    "Infração de VELOCIDADE que não imprime velocidade medida, velocidade limite nem equipamento. Os três DEVEM voltar null. Testa a regra 7 — é onde o modelo mais tende a inventar número."
+  ],
+  "esperado": {
+    "document_type": "notificacao_autuacao",
+    "orgao_autuador": ["DETRAN-SP", "DETRAN/SP", "Departamento Estadual de Trânsito de São Paulo"],
+    "numero_ait": "SP000000000",
+    "placa": "ABC0D00",
+    "data_infracao": "2025-08-05",
+    "hora_infracao": "16:20",
+    "local_infracao": "Av. Paulista, 1000 – Bela Vista – São Paulo/SP",
+    "municipio_uf": ["São Paulo/SP", "São Paulo - SP", "São Paulo"],
+    "codigo_enquadramento": ["Art. 218, I", "Art. 218, I, CTB", "218, I"],
+    "descricao_infracao": "Transitar em velocidade superior à máxima permitida em até 20%.",
+    "data_expedicao_notificacao": "2025-08-10",
+    "data_limite_defesa": null,
+    "equipamento": null,
+    "data_afericao_equipamento": null,
+    "velocidade_medida_kmh": null,
+    "velocidade_limite_kmh": null,
+    "valor_multa_brl": 130.16
+  }
+}

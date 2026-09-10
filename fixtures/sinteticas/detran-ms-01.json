@@ -1,0 +1,27 @@
+{
+  "arquivo": "detran-ms-01.png",
+  "origem": "Modelo demonstrativo DETRAN-MS — dados fictícios, sem validade oficial",
+  "notas": [
+    "Data de emissão obstruída pela marca d'água; rodapé: 'Campo Grande, 16 de agosto de 2025'.",
+    "Local é rodovia (BR-163, km 478), não via urbana."
+  ],
+  "esperado": {
+    "document_type": "notificacao_autuacao",
+    "orgao_autuador": ["DETRAN-MS", "DETRAN/MS", "Departamento Estadual de Trânsito de Mato Grosso do Sul"],
+    "numero_ait": "MS000000000",
+    "placa": "ABC0D00",
+    "data_infracao": "2025-08-12",
+    "hora_infracao": "17:48",
+    "local_infracao": "BR-163, km 478 – Campo Grande/MS",
+    "municipio_uf": ["Campo Grande/MS", "Campo Grande - MS", "Campo Grande"],
+    "codigo_enquadramento": ["Art. 203", "Art. 203, CTB", "203"],
+    "descricao_infracao": "Ultrapassar em local proibido.",
+    "data_expedicao_notificacao": "2025-08-16",
+    "data_limite_defesa": null,
+    "equipamento": null,
+    "data_afericao_equipamento": null,
+    "velocidade_medida_kmh": null,
+    "velocidade_limite_kmh": null,
+    "valor_multa_brl": 130.16
+  }
+}

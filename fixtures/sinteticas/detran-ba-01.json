@@ -1,0 +1,28 @@
+{
+  "arquivo": "detran-ba-01.png",
+  "origem": "Modelo demonstrativo DETRAN-BA — dados fictícios, sem validade oficial",
+  "notas": [
+    "O campo 'Data de Emissão' é cruzado pela marca d'água diagonal; o rodapé traz a data por extenso ('Salvador, 14 de agosto de 2025'). Testa a regra 2.",
+    "Enquadramento em notação de artigo do CTB, não no código NNN-NN. Testa a regra 5.",
+    "O prazo de defesa é descrito em texto ('30 dias a contar da emissão') sem data impressa: data_limite_defesa DEVE ser null. Testa a regra 10."
+  ],
+  "esperado": {
+    "document_type": "notificacao_autuacao",
+    "orgao_autuador": ["DETRAN-BA", "DETRAN/BA", "Departamento Estadual de Trânsito da Bahia"],
+    "numero_ait": "BA000000000",
+    "placa": "ABC0D00",
+    "data_infracao": "2025-08-11",
+    "hora_infracao": "09:15",
+    "local_infracao": "Av. Paralela, 4200 – Paralela – Salvador/BA",
+    "municipio_uf": ["Salvador/BA", "Salvador - BA", "Salvador"],
+    "codigo_enquadramento": ["Art. 181, XVII", "Art. 181, XVII, CTB", "181, XVII"],
+    "descricao_infracao": "Estacionar em local/horário proibido.",
+    "data_expedicao_notificacao": "2025-08-14",
+    "data_limite_defesa": null,
+    "equipamento": null,
+    "data_afericao_equipamento": null,
+    "velocidade_medida_kmh": null,
+    "velocidade_limite_kmh": null,
+    "valor_multa_brl": 195.23
+  }
+}
